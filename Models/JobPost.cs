@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace NeptuneSkillImporter
+namespace NeptuneSkillImporter.Models
 {
     public class JobPost
     {

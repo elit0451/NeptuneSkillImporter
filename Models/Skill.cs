@@ -1,6 +1,6 @@
 using CsvHelper.Configuration.Attributes;
 
-namespace NeptuneSkillImporter
+namespace NeptuneSkillImporter.Models
 {
     public class Skill
     {

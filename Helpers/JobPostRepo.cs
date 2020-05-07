@@ -1,6 +1,7 @@
 using System.Collections.Generic;
+using NeptuneSkillImporter.Models;
 
-namespace NeptuneSkillImporter
+namespace NeptuneSkillImporter.Helpers
 {
     public static class JobPostRepo
     {
