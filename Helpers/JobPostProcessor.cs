@@ -10,6 +10,16 @@ namespace NeptuneSkillImporter.Helpers
         {
             var processedSkills = new List<IEnumerable<Skill>>();
 
+            var skillsRegex = new Dictionary<string, Regex>();
+            const RegexOptions regexOptions = RegexOptions.Compiled | RegexOptions.Multiline;
+
+            foreach (var skill in skills)
+            {
+                var skillName = Regex.Escape(skill.Name);
+                var pattern = $"([^A-Za-z]|^)({skillName})([^A-Za-z]|$)";
+                skillsRegex.Add(skill.Name, new Regex(pattern, regexOptions));
+            }
+
             foreach (var jobPost in jobPosts)
             {
                 var foundSkills = new List<Skill>();
@@ -29,11 +39,7 @@ namespace NeptuneSkillImporter.Helpers
                 {
                     foreach (var skill in skills)
                     {
-                        var skillName = Regex.Escape(skill.Name);
-                        var pattern = $"[^A-Za-z]({skillName})[^A-Za-z]";
-                        Regex r = new Regex(pattern, RegexOptions.Multiline);
-
-                        if (r.IsMatch(jobPost.Header) || r.IsMatch(jobPost.Body))
+                        if (skillsRegex[skill.Name].IsMatch(jobPost.Header) || skillsRegex[skill.Name].IsMatch(jobPost.Body))
                         {
                             skill.Weight = 1;
                             foundSkills.Add(skill);

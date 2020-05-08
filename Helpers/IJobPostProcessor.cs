@@ -5,6 +5,6 @@ namespace NeptuneSkillImporter.Helpers
 {
     public interface IJobPostProcessor
     {
-         IEnumerable<IEnumerable<Skill>> ProcessJobPosts(IEnumerable<Skill> skills, IEnumerable<JobPost> jobPosts);
+        IEnumerable<IEnumerable<Skill>> ProcessJobPosts(IEnumerable<Skill> skills, IEnumerable<JobPost> jobPosts);
     }
 }

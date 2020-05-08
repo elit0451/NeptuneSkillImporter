@@ -5,6 +5,7 @@ namespace NeptuneSkillImporter.Helpers
 {
     public static class JobPostRepo
     {
+        private static readonly List<JobPost> _jobPosts = new List<JobPost>();
         public static List<JobPost> GetJobPosts()
         {
             const string title1 = "Senior Software Developer";
@@ -25,11 +26,20 @@ namespace NeptuneSkillImporter.Helpers
             {
                 new JobPost(title1, post1),
                 new JobPost(title2, post2),
-                new JobPost(title3, post3),
-                jobPostWithSkills
+                new JobPost(title3, post3)
             };
 
             return jobPosts;
+        }
+
+        public static void Add(IEnumerable<JobPost> jobPosts)
+        {
+            _jobPosts.AddRange(jobPosts);
+        }
+
+        public static IEnumerable<JobPost> Get()
+        {
+            return _jobPosts;
         }
     }
 }

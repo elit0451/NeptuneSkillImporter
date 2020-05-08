@@ -19,5 +19,10 @@ namespace NeptuneSkillImporter.Database
         {
             return Traversal().WithRemote(new DriverRemoteConnection(_gremlinClient));
         }
+
+        public GremlinClient GetClient()
+        {
+            return _gremlinClient;
+        }
     }
 }
